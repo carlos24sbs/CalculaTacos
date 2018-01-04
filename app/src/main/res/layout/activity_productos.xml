@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_productos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.pako.calculadoratacos.Productos">
+
+    <Button
+        android:text="Eliminar Productos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_ir_eliminarProducto"
+        android:background="?attr/colorButtonNormal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="103dp" />
+
+    <Button
+        android:text="Agregar Productos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_ir_agregarProducto"
+        android:background="?attr/colorButtonNormal"
+        android:layout_above="@+id/btn_ir_eliminarProducto"
+        android:layout_marginBottom="51dp" />
+
+    <Button
+        android:text="Ver Productos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_ir_verProducto"
+        android:background="?attr/colorButtonNormal"
+        android:layout_marginBottom="51dp"
+        android:layout_above="@+id/btn_ir_agregarProducto"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="PRODUCTOS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="normal|bold"
+        android:textSize="36sp"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" />
+</RelativeLayout>
