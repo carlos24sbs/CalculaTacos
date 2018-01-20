@@ -1,6 +1,5 @@
 package com.example.pako.calculadoratacos;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pako.calculadoratacos.app.modelo.businesslayer.BusinessLayer;
+import com.example.pako.calculadoratacos.app.modelo.dto.Producto;
+
+import java.util.List;
+
+
 public class EliminarProducto extends AppCompatActivity {
 
-    DatabaseHelper myDb; //Acá se instancia la clase DatabaseHelper y se utiliza como MyDb
+     BusinessLayer myDb; //Acá se instancia la clase DatabaseHelper y se utiliza como MyDb
 
     // se declara la variables que tomaran el valor de los elementos del .XML
 
@@ -24,7 +29,7 @@ public class EliminarProducto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eliminar_producto);
-        myDb = new DatabaseHelper(this);
+        myDb = new BusinessLayer(this);
 
         //Se extraen los valores de el XML en las variables locales
 
@@ -40,36 +45,29 @@ public class EliminarProducto extends AppCompatActivity {
 
     }
 
-    //Método para ver todos los datos
-
-    public void VerProductos() {
+    public void VerProductos() {    //Método para ver todos los datos
         btn_ver_eliminar.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Cursor res = myDb.getAllData();//LLama a el método que esta el la clase DatabaseHelper
-                        if (res.getCount() == 0) { //Si no hay datos
-                            //Mostrar un mensage
-                            showMessage("Error", "No existe algún producto");
+                        List<Producto> dtos = myDb.ProductoListar();//LLama a el método que esta el la clase DatabaseHelper
+                        if (dtos.isEmpty()) { //Si no hay datos
+                            showMessage("Error", "No existe algún producto");                            //Mostrar un mensage
                             return;
                         }
                         StringBuffer buffer = new StringBuffer(); //A ESTO NO LE ENTIENDO XD
-                        while (res.moveToNext()) {//Mientras se mueva al siguiente elemento
-                            buffer.append("Id :" + res.getString(0) + "\n"); //Va a obtener datos de la columna 0 (Id)
-                            buffer.append("Nombre :" + res.getString(1) + "\n"); //Va a obtener datos de la columna 0 (Name)
-                            buffer.append("Costo :" + res.getString(2) + "\n\n"); //Va a obtener datos de la columna 0 (Surname)
+                        for(Producto dto : dtos){
+                            buffer.append("Id :" + dto.getId() + "\n"); //Va a obtener datos de la columna 0 (Id)
+                            buffer.append("Nombre :" + dto.getNombre() + "\n"); //Va a obtener datos de la columna 0 (Name)
+                            buffer.append("Costo :" + dto.getCosto() + "\n\n"); //Va a obtener datos de la columna 0 (Surname)
                         }
-
-                        //Show all Data
-                        showMessage("Productos", buffer.toString());
-
+                        showMessage("Productos", buffer.toString());                        //Show all Data
                     }
                 }
         );
     }
 
-    //Método para mostrar un mensage
-    public void showMessage(String title, String Message) {
+    public void showMessage(String title, String Message) {//Método para mostrar un mensage
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);
@@ -77,11 +75,7 @@ public class EliminarProducto extends AppCompatActivity {
         builder.show();
     }
 
-
-
-    //Método para eliminar Datos
-
-    public void EliminarProducto(){
+    public void EliminarProducto(){    //Método para eliminar Datos
         btn_eliminar_eliminar.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -91,11 +85,13 @@ public class EliminarProducto extends AppCompatActivity {
                             Toast.makeText(EliminarProducto.this, "Ingresa el ID del producto que deseas eliminar.", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            Integer deletedRows = myDb.deleteData(edit_eliminar.getText().toString());
-                            if (deletedRows > 0)
+                            try{
+                                myDb.ProductoEliminar(Integer.parseInt(idDelete));
                                 Toast.makeText(EliminarProducto.this, "Producto Eliminado Correctamente", Toast.LENGTH_LONG).show();
-                            else
+                            }catch (Exception ex){
                                 Toast.makeText(EliminarProducto.this, "Producto no eliminado", Toast.LENGTH_LONG).show();
+                            }
+
                         }
 
                     }

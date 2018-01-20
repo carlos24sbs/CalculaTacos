@@ -8,8 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pako.calculadoratacos.app.modelo.businesslayer.BusinessLayer;
+import com.example.pako.calculadoratacos.app.modelo.dto.Producto;
+
+import java.util.List;
+
+
 public class Productos extends AppCompatActivity {
-    DatabaseHelper myDb; //Acá se instancia la clase DatabaseHelper y se utiliza como MyDb
+    BusinessLayer myDb; //Acá se instancia la clase DatabaseHelper y se utiliza como MyDb
     Button btn_ir_Ver;
     Button btn_ir_Agregar;
     Button btn_ir_Eliminar;
@@ -18,7 +24,7 @@ public class Productos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
-        myDb = new DatabaseHelper(this);
+        myDb = new BusinessLayer(this);
 
         btn_ir_Ver = (Button) findViewById(R.id.btn_ir_verProducto);
         btn_ir_Agregar = (Button) findViewById(R.id.btn_ir_agregarProducto);
@@ -36,23 +42,19 @@ public class Productos extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Cursor res = myDb.getAllData();//LLama a el método que esta el la clase DatabaseHelper
-                        if (res.getCount() == 0) { //Si no hay datos
+                        List<Producto> dtos = myDb.ProductoListar();//LLama a el método que esta el la clase DatabaseHelper
+                        if (dtos.isEmpty()) { //Si no hay datos
                             //Mostrar un mensage
                             showMessage("Error", "No existe algún producto");
                             return;
                         }
                         StringBuffer buffer = new StringBuffer(); //A ESTO NO LE ENTIENDO XD
-                        while (res.moveToNext()) {//Mientras se mueva al siguiente elemento
-                            buffer.append("Id :" + res.getString(0) + "\n"); //Va a obtener datos de la columna 0 (Id)
-                            buffer.append("Nombre :" + res.getString(1) + "\n"); //Va a obtener datos de la columna 0 (Name)
-                            buffer.append("Costo :" + res.getString(2) + "\n\n"); //Va a obtener datos de la columna 0 (Surname)
+                        for(Producto dto : dtos){
+                            buffer.append("Id :" + dto.getId() + "\n"); //Va a obtener datos de la columna 0 (Id)
+                            buffer.append("Nombre :" + dto.getNombre() + "\n"); //Va a obtener datos de la columna 0 (Name)
+                            buffer.append("Costo :" + dto.getCosto() + "\n\n"); //Va a obtener datos de la columna 0 (Surname)
                         }
-
-                        //Show all Data
-
-                        showMessage("Productos", buffer.toString());
-
+                        showMessage("Productos", buffer.toString());                        //Show all Data
                     }
                 }
         );
