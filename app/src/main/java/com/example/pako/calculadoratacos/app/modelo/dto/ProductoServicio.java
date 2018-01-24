@@ -8,8 +8,8 @@ public class ProductoServicio {
     private Integer id;
     private Integer cantidad;
     private Double costo;
-    private Producto idProducto;
-    private Servicio idServicio;
+    private Integer idProducto;
+    private Integer idServicio;
 
     public ProductoServicio() {
     }
@@ -38,19 +38,19 @@ public class ProductoServicio {
         this.costo = costo;
     }
 
-    public Producto getIdProducto() {
+    public Integer getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Producto idProducto) {
+    public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
 
-    public Servicio getIdServicio() {
+    public Integer getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(Servicio idServicio) {
+    public void setIdServicio(Integer idServicio) {
         this.idServicio = idServicio;
     }
 

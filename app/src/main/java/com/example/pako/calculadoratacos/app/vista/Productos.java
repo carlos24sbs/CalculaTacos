@@ -1,15 +1,17 @@
-package com.example.pako.calculadoratacos;
+package com.example.pako.calculadoratacos.app.vista;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pako.calculadoratacos.R;
 import com.example.pako.calculadoratacos.app.modelo.businesslayer.BusinessLayer;
 import com.example.pako.calculadoratacos.app.modelo.dto.Producto;
+import com.example.pako.calculadoratacos.app.vista.AgregarProducto;
+import com.example.pako.calculadoratacos.app.vista.EliminarProducto;
 
 import java.util.List;
 

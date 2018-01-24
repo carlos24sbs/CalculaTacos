@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pako.calculadoratacos.Productos">
+    tools:context="com.example.pako.calculadoratacos.app.vista.Productos">
 
     <Button
         android:text="Eliminar Productos"

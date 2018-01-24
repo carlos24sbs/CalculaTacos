@@ -15,10 +15,12 @@ import java.util.List;
  */
 
 public class UsuarioDao extends DaoCore {
-    String[] campos = new String[] {KEY_USUARIO_ID, KEY_USUARIO_NOMBRE};
+    private String[] campos = new String[] {KEY_USUARIO_ID, KEY_USUARIO_NOMBRE};
+
 
     public UsuarioDao(Context cont){
         super(cont);
+        db = this.getWritableDatabase(); //crea una instancia de la base de datos
     }
 
     public void persitir(Usuario dto){

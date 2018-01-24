@@ -1,4 +1,4 @@
-package com.example.pako.calculadoratacos;
+package com.example.pako.calculadoratacos.app.vista;
 
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pako.calculadoratacos.R;
 import com.example.pako.calculadoratacos.app.modelo.businesslayer.BusinessLayer;
 import com.example.pako.calculadoratacos.app.modelo.dto.Producto;
 

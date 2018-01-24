@@ -41,6 +41,10 @@ public class DaoCore extends SQLiteOpenHelper {
     protected static final String KEY_PRODUCTOSERVICIO_SERVICIO = "idServicio";
     protected static final String KEY_PRODUCTOSERVICIO_PRODUCTO = "idProducto";
 
+    protected SQLiteDatabase db;
+    protected String[] args;
+    protected ContentValues contValores;
+
     public DaoCore(Context context) {//Constructor   ->Cuando se manda a llamar al constructor, la base de datos es creada
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

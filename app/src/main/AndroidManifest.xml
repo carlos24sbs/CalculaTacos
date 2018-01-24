@@ -17,13 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Productos"
+        <activity android:name=".app.vista.Productos"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".AgregarProducto"
+        <activity android:name=".app.vista.AgregarProducto"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".EliminarProducto"
+        <activity android:name=".app.vista.EliminarProducto"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".ActualizarProducto"
+        <activity android:name=".app.vista.ActualizarProducto"
                   android:screenOrientation="portrait"></activity>
     </application>
 

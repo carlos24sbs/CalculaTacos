@@ -1,7 +1,9 @@
-package com.example.pako.calculadoratacos;
+package com.example.pako.calculadoratacos.app.vista;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.pako.calculadoratacos.R;
 
 public class ActualizarProducto extends AppCompatActivity {
 

@@ -7,7 +7,7 @@ import java.util.Date;
  */
 
 public class Servicio {
-    private int id;
+    private Integer id;
     private Integer idUsuario;
     private Integer idMesa;
     private Double total;
@@ -17,7 +17,7 @@ public class Servicio {
     public Servicio() {
     }
 
-    public Servicio(int id, Integer idUsuario, Integer idMesa, Double total, Date fechaInicio, Date fechaTermino) {
+    public Servicio(Integer id, Integer idUsuario, Integer idMesa, Double total, Date fechaInicio, Date fechaTermino) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.idMesa = idMesa;
@@ -26,11 +26,11 @@ public class Servicio {
         this.fechaTermino = fechaTermino;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -62,16 +62,32 @@ public class Servicio {
         return fechaInicio;
     }
 
+    public long getFechaInicio_long() {
+        return fechaInicio.getTime();
+    }
+
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaInicio(long fechaInicio) {
+        this.fechaInicio = new Date(fechaInicio);
     }
 
     public Date getFechaTermino() {
         return fechaTermino;
     }
 
+    public long getFechaTermino_long() {
+        return fechaTermino.getTime();
+    }
+
     public void setFechaTermino(Date fechaTermino) {
         this.fechaTermino = fechaTermino;
+    }
+
+    public void setFechaTermino(long fechaTermino) {
+        this.fechaTermino = new Date(fechaTermino);
     }
 
     @Override
