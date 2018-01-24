@@ -64,7 +64,7 @@ public class AgregarProducto extends AppCompatActivity {
                             editNombre.setText("");
                             editCosto.setText("");
                         } else {
-                            showMessage("ERROR", "Rellena todos los campos");
+                            showMessage("ERROR", "Rellena todos los campos"+ dto.getCosto());
                         }
                     }
                 }

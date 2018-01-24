@@ -87,10 +87,10 @@ public class Producto {
 
     public boolean validarSinId(){
         boolean regreso = true;
-        if(nombre != null && nombre!=""){
+        if(nombre == null || nombre ==""){
             regreso = false;
         }
-        if(costo != null && costo != 0){
+        if(costo == null || costo == 0){
             regreso = false;
         }
         return regreso;
