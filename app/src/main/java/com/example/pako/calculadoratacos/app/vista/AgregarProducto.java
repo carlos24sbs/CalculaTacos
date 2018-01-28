@@ -47,9 +47,6 @@ public class AgregarProducto extends AppCompatActivity {
 
     }
 
-
-
-
     //Metodo para Validar
     public void Validar(){
         btnAgregar.setOnClickListener(

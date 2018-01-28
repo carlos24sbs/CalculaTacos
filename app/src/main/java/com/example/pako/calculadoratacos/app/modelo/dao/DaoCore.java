@@ -53,9 +53,9 @@ public class DaoCore extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //Código que crea la tabla
         db.execSQL("create table " + TABLE_PRODUCTO + " ("
-                + KEY_PRODUCTO_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + KEY_PRODUCTO_NOMBRE + "TEXT,"
-                + KEY_PRODUCTO_COSTO + "REAL)");
+                + KEY_PRODUCTO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + KEY_PRODUCTO_NOMBRE + " TEXT,"
+                + KEY_PRODUCTO_COSTO + " REAL)");
         db.execSQL("create table " + TABLE_SERVICIO + " ("
                 + KEY_SERVICIO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + KEY_SERVICIO_USUARIO + " INTEGER,"
